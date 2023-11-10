@@ -1,8 +1,7 @@
-www.example1.com https://www.xerox.com/en-us 301
-www.xyzfoobar.com https://www.xerox.com
-xyzfoobar.com https://www.xerox.com
-
-# From bulkvirt
+# Updated from production 11/10/2023
+# Razuna raz1/rewrites/source/bulkVirtMap.txt
+#
+##
 # This file contains the souce for the bulk virtual
 # host mappings. Format
 #     Host	Destination	Type	Status
@@ -1093,7 +1092,6 @@ www.xeroxprinters.co.za	http://www.office.xerox.com/index/enza.html	URL	301
 www.xeroxprinters.com.au	http://www.fujixeroxprinters.com.au/	URL	301
 www.xeroxprinters.com.my	http://www.fujixerox.com.my	URL	301
 www.xeroxprinters.com.vn	http://www.fujixerox.com.vn	URL	301
-www.xeroxprinters.hk	http://www.fxprinters.com.hk	URL	301
 www.xeroxprintservicesubc.com	http://www.xeroxprintservicesubc.ca	URL	301
 www.xeroxproducts.ca	http://www.xerox.ca/office/digital-printing-equipment/enca.html	URL	301
 www.xeroxproducts.ca	http://www.xerox.ca/office/digital-printing-equipment/enca.html	URL	301
@@ -1618,7 +1616,6 @@ xeroxprinters.co.za	http://www.office.xerox.com/index/enza.html	URL	301
 xeroxprinters.com.au	http://www.fujixeroxprinters.com.au/	URL	301
 xeroxprinters.com.my	http://www.fujixerox.com.my	URL	301
 xeroxprinters.com.vn	http://www.fujixerox.com.vn	URL	301
-xeroxprinters.hk	http://www.fxprinters.com.hk	URL	301
 xeroxprintservicescorus.ca	https://www.xerox.ca/	URL	301
 xeroxprintservicesubc.ca	https://www.xerox.ca/	URL	301
 xeroxproducts.ca	http://www.xerox.ca/office/digital-printing-equipment/enca.html	URL	301
@@ -1881,3 +1878,5 @@ xeroxcanada.com https://www.xerox.ca
 www.xeroxcanada.com	https://www.xerox.ca
 draftspark.com	https://draftspark.ai/
 www.draftspark.com	https://draftspark.ai/
+tsip.corp.xerox.com	http://xerox.sharepoint.com/teams/tsip	URL	301
+www.tsip.corp.xerox.com	http://xerox.sharepoint.com/teams/tsip	URL	301
