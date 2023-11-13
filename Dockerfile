@@ -1,10 +1,23 @@
 FROM xeroxcom/xcom-apache-secure
 
-# Put logs in /var/logs/apache (later to be handled with a volume)
-#RUN mkdir /var/log/apache
+USER root
 
-#COPY ./apache/htdocs /usr/local/apache2/htdocs
-#COPY ./apache/conf /usr/local/apache2/conf
+
+# CVE-2022-40897⁠ Remove setuptools
+# OS update and install nec packages
+# Cleanup
+# Running as one "RUN" reduces layers and saves some space in the resulting image
+RUN dnf remove setuptools && dnf update -y && dnf install mod_security_crs mod_security-mlogc -y &&  \
+    dnf clean all && rm -rf /var/cache/yum
+
+# CVE-2022-40897
+#RUN pip uninstall setuptools
+RUN dnf remove python-setuptools -y
+
+WORKDIR /etc/httpd/conf.d
+RUN rm userdir.conf welcome.conf autoindex.conf 
+
 
 COPY ./httpd/conf /etc/httpd/conf
 COPY ./httpd/conf.d /etc/httpd/conf.d
+COPY ./www/html /var/www/html
