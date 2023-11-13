@@ -1,4 +1,4 @@
-FROM xeroxcom/xcom-apache-secure
+FROM registry.access.redhat.com/ubi9/httpd-24
 
 USER root
 
@@ -10,8 +10,7 @@ USER root
 RUN dnf remove setuptools && dnf update -y && dnf install mod_security_crs mod_security-mlogc -y &&  \
     dnf clean all && rm -rf /var/cache/yum
 
-# CVE-2022-40897
-#RUN pip uninstall setuptools
+# CVE-2022-40897. This module is in the base RHEL UBI.
 RUN dnf remove python-setuptools -y
 
 WORKDIR /etc/httpd/conf.d
