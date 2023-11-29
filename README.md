@@ -40,9 +40,16 @@ This project includes a github action. On push, and new docker image will be bui
 When a new image is published, there is no automated deployment into AWS ECS. The task definition will need to be updated with a new version. This is done via "Create new revision" in the task definition screen in AWS.
 
 
+# Testing
+curl -H "Host: www.assetdb.com" http://vdspoc.awscloud.goxerox.com
 
 
+# Project TODO
+- Bind allocated EIPs to ALB. IPs cannot change over time.
+- Rename to remove "POC" from resource names
+- Standard Xerox AWS tags on resources
+- Script to register new taskdefinition revision via AWS CLI or CloudFormation
 
-Deploying AWS ECS resources - only when building initial environment
-cd aws
-$ aws cloudformation create-stack --capabilities CAPABILITY_NAMED_IAM --stack-name xcom-vds-poc --template-body file://fargate.yml
+# Notes
+- Describe task definition
+    aws ecs describe-task-definition --task-definition VdsPocServiceTaskDefinition --output yaml

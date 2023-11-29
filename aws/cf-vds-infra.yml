@@ -43,7 +43,7 @@ Parameters:
     Default: VdsPocService
   ContainerPort:
     Type: Number
-    Default: 8080
+    Default: 80
   LoadBalancerPort:
     Type: Number
     Default: 80
