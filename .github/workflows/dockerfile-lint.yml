@@ -1,0 +1,10 @@
+name: Dockerfile Linter
+on: [push]
+jobs:
+  lint_docker_file:
+    runs-on: ubuntu-latest
+    steps:
+      - name: lint docker file
+        uses: rusty-actions/dockerfile-linter@v1
+        with:
+          dockerfile: ./Dockerfile
