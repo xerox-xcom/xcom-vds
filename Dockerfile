@@ -1,8 +1,6 @@
 # Redhat Container Images: https://catalog.redhat.com/software/containers/search
 FROM registry.access.redhat.com/ubi9/httpd-24:1-311
 
-
-
 USER root
 
 
