@@ -1,4 +1,7 @@
-FROM registry.access.redhat.com/ubi9/httpd-24
+# Redhat Container Images: https://catalog.redhat.com/software/containers/search
+FROM registry.access.redhat.com/ubi9/httpd-24:1-311
+
+
 
 USER root
 
@@ -20,3 +23,5 @@ RUN rm userdir.conf welcome.conf autoindex.conf
 COPY ./httpd/conf /etc/httpd/conf
 COPY ./httpd/conf.d /etc/httpd/conf.d
 COPY ./www/html /var/www/html
+
+EXPOSE 80
