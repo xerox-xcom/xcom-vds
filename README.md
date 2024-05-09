@@ -11,7 +11,7 @@ ECS Cluster, ECS Service and Task, deployed with an ApplicationLoadBalancer
 It can be deployed via command line:
     $ aws cloudformation create-stack --capabilities CAPABILITY_NAMED_IAM --stack-name xcom-vds-poc --template-body file://fargate.yml
 
-The AWS client will need to be configured, with a user account with sufficient privileges:
+The AWS client will need to be configured, with a user account with sufficient privileges (to be tweaked for minimum perms):
 - AmazonEC2FullAcces
 - AmazonECS_FullAccess
 - AmazonRoute53FullAcccess
