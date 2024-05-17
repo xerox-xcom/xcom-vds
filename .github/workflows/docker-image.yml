@@ -36,5 +36,4 @@ jobs:
         file: ./Dockerfile
         push: true
         tag_with_ref: true
-        tags: ${{ steps.meta.outputs.tags }}
-        annotations: ${{ steps.meta.outputs.annotations }}
+        tags: xeroxcom/xcom-vds:latest
