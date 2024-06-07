@@ -1,0 +1,47 @@
+
+    #### Remote/client blacklist
+    # This will blacklist based on IP address
+    # The blacklist-map.txt can have an entry with one of three formats
+    # 1) If you want a specific IP to get a 403, use the IP address as the key and 403 as the value
+    # 1.2.3.4 403
+    # 2) If you want a specific IP to get a 404, use the IP address as the key and 404 as the value
+    # 1.2.3.4 404
+    # 3) Any IP listed without a return code will default to a 403
+    # 1.2.3.4
+
+    # Define the map
+    RewriteMap blacklistmap txt:/etc/httpd/conf.d/blacklist-map.txt
+    
+    # Look for a match on 403 and return a 403
+    RewriteCond ${blacklistmap:%{REMOTE_ADDR}} ^403$ [NC]
+    RewriteRule .* - [F,L] 
+
+    # Look for a match on 404 and return a 404
+    RewriteCond ${blacklistmap:%{REMOTE_ADDR}} ^404$ [NC]
+    RewriteRule .* - [R=404,L] 
+
+    # Else default condition if we get a match is to return a 403
+    # This does not work
+#    RewriteCond ${blacklistmap:%{REMOTE_ADDR} ^(.+)$
+#    RewriteRule .* - [R=403,L]  
+
+    #### Redirect map
+    # Redirect based on map
+    # If you need to troubleshoot here, you can turn ErrorLog level to 'LogLevel debug rewrite:trace8' in httpd.conf
+    
+    # Map functions for map and lowercase
+    RewriteMap vanitymap txt:/etc/httpd/conf.d/vanity-redirect-map.txt
+    RewriteMap lowercase int:tolower
+
+    # Lowercase the server name
+    RewriteCond "${lowercase:%{SERVER_NAME}}"  "^(.+)$"
+
+    # Does lowercased server name (%1) exist in the map? 
+    # Without this it will 301 to the same URL if not found in the map
+    RewriteCond ${vanitymap:%1} "^(.+)$"
+
+    # If so, redirect to the map value
+    RewriteRule ^(.*)$ ${vanitymap:${lowercase:%{SERVER_NAME}}} [R=301,L]
+
+    # If we fall through, throw a 'brandless' 404
+    RewriteRule ^(.*)$ - [R=404,L]
