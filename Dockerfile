@@ -7,6 +7,7 @@ USER root
 # OS update and install nec packages
 # Cleanup
 # Running as one "RUN" reduces layers and saves some space in the resulting image
+#RUN dnf remove setuptools && dnf update -y && dnf install mod_security_crs mod_security-mlogc -y &&  \
 RUN dnf remove setuptools && dnf update -y && dnf install mod_security_crs mod_security-mlogc -y &&  \
     dnf clean all && rm -rf /var/cache/yum
 
@@ -22,5 +23,5 @@ COPY ./httpd/conf.d /etc/httpd/conf.d
 COPY ./www/html /var/www/html
 
 
-#EXPOSE 80
+EXPOSE 80
 #EXPOSE 443
