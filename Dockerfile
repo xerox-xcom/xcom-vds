@@ -23,5 +23,9 @@ COPY ./httpd/conf.d /etc/httpd/conf.d
 COPY ./www/html /var/www/html
 
 
+<<<<<<< HEAD
 EXPOSE 80
+=======
+#EXPOSE 80
+>>>>>>> main
 #EXPOSE 443
