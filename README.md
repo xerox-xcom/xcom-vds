@@ -3,23 +3,8 @@ xerox.com Virtual Domain Service
 
 The Virtual Domain Service provides the ability to have virtual (or "vanity") domains that exist only to redirect to another site/URL. This is a replacement for the "bulkvirt" service hosted on the XCOM DA platform.
 
-# Architecture
-VDS is deployed as an AWS ECS service, based on a Docker image. The infrastructure for this service is deployed via a CloudFormation script located in aws/cf-vds-infra.yml.
-
-ECS Cluster, ECS Service and Task, deployed with an ApplicationLoadBalancer
-
-It can be deployed via command line:
-    $ aws cloudformation create-stack --capabilities CAPABILITY_NAMED_IAM --stack-name xcom-vds-poc --template-body file://fargate.yml
-
-The AWS client will need to be configured, with a user account with sufficient privileges (to be tweaked for minimum perms):
-- AmazonEC2FullAcces
-- AmazonECS_FullAccess
-- AmazonRoute53FullAcccess
-- AmazonVPCFullAccess
-- AWSCloudFormationFullAccess
-- CloudWatchLogsFullAccess
-- IAMFullAccess
-
+## Azure deployment
+### TODO
 
 ## Docker Image
 The docker image is based on the official RHEL HTTPD image. mod_security is layered on top of the image, using the default mod_security configuration (for now). 
